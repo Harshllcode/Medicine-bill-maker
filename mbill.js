@@ -76,11 +76,29 @@ function displayItems() {
 
 }
 function show_sum() {
-    let total=0;    
-    let sum = document.querySelector('.container');
+    let total = 0;    
     medicineDetails.forEach((items) => {
-        total +=items.amt;
-    })
-    sum.insertAdjacentHTML('beforeend', `<h2 class="sum">The total is: ${total}</h2>`)
+        total += items.amt;
+    });
+
+    // pehle purana total hatao (agar hai)
+    let oldTotal = document.querySelector('.sum');
+    if (oldTotal) oldTotal.remove();
+
+    // container ke end me naya total dikhayo
+    let sum = document.querySelector('.container');
+    sum.insertAdjacentHTML('beforeend', `<h2 class="sum">The total is: ₹${total}</h2>`);
 }
-show_sum()
+
+function delete_row_last(){
+     if (medicineDetails.length === 0) {
+        alert("⚠️ No items to delete!");
+        return;
+    }
+    medicineDetails.pop();
+    localStorage.setItem('Product', JSON.stringify(medicineDetails));
+
+    displayItems();
+    show_sum(); // 👈 total bhi refresh hoga
+}
+
