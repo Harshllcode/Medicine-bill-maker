@@ -7,7 +7,10 @@
 </head>
 
 <body>
-    <button class="reset-btn" onclick="resetBill()">❌</button>
+    <div class="buttons">
+        <button class="reset-btn btn" onclick="resetBill()">Delete All</button>
+        <button class="last-row-btn btn" onclick="delete_row_last()">Last Delete</button>
+    </div>
     <div class="main">
         <div class="grid"><input type="text" class="rate" placeholder="price"></div>
         <div class="grid"><input type="text" class="medicineName" placeholder="medicineName"></div>
@@ -35,4 +38,5 @@
 </body>
 
 </html>
+
 
